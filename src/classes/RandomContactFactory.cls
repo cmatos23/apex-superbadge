@@ -13,5 +13,14 @@ public with sharing class RandomContactFactory {
         }
         return contacts;
     }
+    public static List<Contact> generateRandomContactsWithAccount(Id accountId, Integer numContacts, String lastName){
+        List<Contact> contacts = generateRandomContacts(numContacts, lastName);
+
+        for(Contact c : contacts){
+            c.AccountId = accountId;
+        }
+
+        return contacts;
+    }
 
 }
