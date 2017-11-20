@@ -4,3 +4,4 @@
 salesforce.schema
 /IlluminatedCloud/
 config/**
+/src/objects/
