@@ -1,0 +1,22 @@
+<!--
+ - Created by Chris on 12/13/2017.
+ -->
+
+<aura:component description="campingListItem">
+    <aura:attribute name="item" type="Camping_Item__c" required="true" />
+    <aura:attribute name="disabled" type="Boolean" default="false" />
+    <fieldset class="slds-box slds-theme--default slds-container--small">
+
+        <form class="slds-form--stacked">
+
+            {!v.item.Name}
+            <lightning:formattedNumber value="{!v.item.Price__c}" style="currency"/>
+            <lightning:formattedNumber value="{!v.item.Quantity__c}" style="currency"/>
+            <lightning:input type="toggle"
+                             label="Packed?"
+                             name="packed"
+                             checked="{!v.item.Packed__c}" />
+            <lightning:button onclick="{!c.packItem}" label="Packed!" disabled="{!v.disabled}"/>
+        </form>
+    </fieldset>
+</aura:component>

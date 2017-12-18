@@ -1,0 +1,8 @@
+<!--
+ - Created by Chris on 12/13/2017.
+ -->
+
+<aura:component description="camping">
+    <c:campingHeader />
+    <c:campingList />
+</aura:component>

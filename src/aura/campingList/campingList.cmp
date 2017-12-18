@@ -1,0 +1,12 @@
+<!--
+ - Created by Chris on 12/13/2017.
+ -->
+
+<aura:component description="campingList">
+    <aura:attribute name="items" type="Camping_Item__c[]" default="[]"/>
+    <aura:attribute name="newItem" type="Camping_Item__c" default="{'sobjectType' : 'Camping_Item__c', 'Quantity__c' : 0, 'Price__c' : 0}"/>
+   <aura:iteration items="{!v.items}" var="campingItem">
+
+   </aura:iteration>
+    <c:campingListItem item="{'sobjectType' : 'Camping_Item__c', 'Packed__c' : false, 'Name' : 'Test'}"/>
+</aura:component>
