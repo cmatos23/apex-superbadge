@@ -2,11 +2,33 @@
  - Created by Chris on 12/13/2017.
  -->
 
-<aura:component description="campingList">
+<aura:component description="campingList" controller="CampingListController">
     <aura:attribute name="items" type="Camping_Item__c[]" default="[]"/>
     <aura:attribute name="newItem" type="Camping_Item__c" default="{'sobjectType' : 'Camping_Item__c', 'Quantity__c' : 0, 'Price__c' : 0}"/>
+    <aura:handler action="{!c.doInit}" value="{!this}" name="init"/>
    <aura:iteration items="{!v.items}" var="campingItem">
 
    </aura:iteration>
-    <c:campingListItem item="{'sobjectType' : 'Camping_Item__c', 'Packed__c' : false, 'Name' : 'Test'}"/>
+    <lightning:card title="Create Item" iconName="standard:scan_card">
+        <p class="slds-text-heading--medium slds-p-horizontal--small">
+           <lightning:input type="text" value="{!v.newItem.Name}" name="item_name" aura:id="campingform" label="Name"/>
+        </p>
+        <p class="slds-p-horizontal--small">
+           <lightning:input type="number" value="{!v.newItem.Quantity__c}" name="quantity" min="1" aura:id="campingform"  label="Quantity"/>
+        </p>
+        <p class="slds-p-horizontal--small">
+            <lightning:input type="number"  value="{!v.newItem.Price__c}" formatter="currency" step="0.1" name="price" min="0.1" aura:id="campingform"  label="Price"/>
+        </p>
+        <p>
+            <lightning:input type="checkbox"
+                             label="Packed"
+                             name="packed"
+                             checked="{!v.newItem.Packed__c}"
+                             messageToggleActive="Yes"
+                             messageToggleInactive="No"
+                             />
+        </p>
+        <lightning:button onclick="{!c.clickCreateItem}" name="Submit" type="submit" label="Submit"/>
+    </lightning:card>
+    <!--<c:campingListItem item="{'sobjectType' : 'Camping_Item__c', 'Packed__c' : false, 'Name' : 'Test'}"/>-->
 </aura:component>
