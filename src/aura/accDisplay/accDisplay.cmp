@@ -14,9 +14,9 @@
     <force:recordData aura:id="record"
                       layoutType="FULL"
                       recordId="{!v.recordId}"
+                      fields ="Name,BillingCity,Description,Industry,Phone"
                       targetError="{!v.recordError}"
-                      targetRecord="{!v.accountRecord}"
-                      targetFields ="{!v.simpleRecord}"
+                      targetFields="{!v.accountRecord}"
                       mode="VIEW"/>
 
     <!-- Display a lightning card with details about the record -->
