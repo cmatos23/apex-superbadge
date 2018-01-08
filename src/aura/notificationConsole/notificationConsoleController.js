@@ -27,7 +27,7 @@
     });
     $A.enqueueAction(action);
 
-    helper.displayToast(component, 'success', 'Ready to receive notifications.');
+//    helper.displayToast(component, 'success', 'Ready to receive notifications.');
   },
 
 
