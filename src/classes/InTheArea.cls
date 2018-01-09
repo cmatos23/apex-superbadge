@@ -16,9 +16,17 @@ public class InTheArea {
     }
 
     @AuraEnabled
-    public static String getListByAddress(Id recordId, String searchQuery) {
+    public static String getListByAddress(Id recordId, String objectType, String searchQuery) {
         try {
-            String location = contactSelect(recordId);
+            String location;
+            if (objectType == 'Account') {
+                location = accountSelect(recordId);
+            } else if (objectType == 'Contact') {
+                location = contactSelect(recordId);
+            }
+            else {
+                return '{"error": "This component cannot be used on this page type."}';
+            }
             String url = 'https://th-yelp-locator.herokuapp.com/search?address=' + EncodingUtil.urlEncode(location, 'UTF-8') + '&term=' + EncodingUtil.urlEncode(searchQuery, 'UTF-8');
             String resultList = getHttp(url);
             return resultList;
@@ -30,6 +38,12 @@ public class InTheArea {
     private static String contactSelect (Id recordId) {
         Contact contact = [SELECT MailingStreet, MailingCity, MailingState FROM Contact WHERE Id=:recordId];
         String location = contact.MailingStreet + ',' + contact.MailingCity + ',' + contact.MailingState;
+        return location;
+    }
+
+    private static String accountSelect (Id recordId) {
+        Account account = [SELECT BillingStreet, BillingCity, BillingState FROM Account WHERE Id=:recordId];
+        String location = account.BillingStreet + ',' + account.BillingCity + ',' + account.BillingState;
         return location;
     }
 }
