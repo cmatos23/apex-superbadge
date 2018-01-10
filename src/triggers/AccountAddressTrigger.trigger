@@ -4,6 +4,6 @@
 
 trigger AccountAddressTrigger on Account (before insert, before update) {
     if(Trigger.isBefore && (Trigger.isUpdate || Trigger.isInsert)){
-        AccountAddressHelper.matchPostalCodes(Trigger.new, Trigger.oldMap);
+//        AccountAddressHelper.matchPostalCodes(Trigger.new, Trigger.oldMap);
     }
 }
