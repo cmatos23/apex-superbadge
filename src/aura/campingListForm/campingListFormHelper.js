@@ -11,9 +11,9 @@
 },
 
 
-		validateItemForm: function(component) {
+    validateItemForm: function(component) {
 
-              // Simplistic error checking
+          // Simplistic error checking
         var validItem = true;
 
         // Name must not be blank
@@ -37,7 +37,7 @@
         else {
             quantityField.set("v.errors", null);
         }
-		// Price must not be blank
+        // Price must not be blank
         var priceField = component.find("price");
         var price = priceField.get("v.value");
         if ($A.util.isEmpty(price)){
@@ -47,7 +47,7 @@
         else {
             quantityField.set("v.errors", null);
         }
-            return (validItem);
+        return (validItem);
 
 	}
 })
